@@ -129,6 +129,12 @@ body {
   margin-bottom: 1rem;
   margin-left: 30px;
 }
+.animais-descricao section {
+  display: none;
+}
+.animais-descricao section.ativo {
+  display: block;
+}
 .mapa {
   grid-column: 2;
 }
