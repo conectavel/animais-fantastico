@@ -21,6 +21,27 @@ function navTab() {
 navTab() //isolando a função
 
 
+const faqDd = document.querySelectorAll(".js-faq dd")
+const faqDt = document.querySelectorAll(".js-faq dt")
+
+function faqdtClick(index) {
+  faqDd[index].classList.toggle("ativo")
+  //faqDd.forEach((item) => {
+  //item.classList.toggle("ativo");
+  // });
+
+}
+faqDt.forEach((item, index) => {
+  item.addEventListener("click", () => {
+    faqdtClick(index);
+  })
+})
+
+
+
+
+
+
 
 const imgTop = document.querySelector('img');
 console.log(imgTop.offsetTop)
@@ -42,6 +63,7 @@ links.forEach(function (item) {
     console.log(item, "Não possui acessibilidade")
   }
 })
+
 
 const browserSmall = window.matchMedia("(max-width: 720px)").matches;
 console.log(browserSmall)

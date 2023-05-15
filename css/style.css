@@ -140,14 +140,30 @@ body {
 .animais-descricao section.ativo {
   display: block;
 }
+.js-faq dd {
+  opacity: 0;
+  overflow: hidden;
+  transition: 0.2s;
+  height: 1%;
+}
+.js-faq dd.ativo {
+  overflow: visible;
+  opacity: 1;
+  animation: moveToRight 0.5s ease-in-out;
+  animation-delay: 2ms;
+  height: 40px;
+}
+
 @keyframes moveToRight {
   0% {
-    transform: translateX(60px);
+    transform: translatey(40px);
     opacity: 0;
+    animation-delay: 2ms;
   }
   100% {
     transform: translateX(0px);
     opacity: 1;
+    animation-delay: 2ms;
   }
 }
 .mapa {
