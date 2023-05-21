@@ -20,54 +20,59 @@ function navTab() {
 }
 navTab() //isolando a função
 
+function navFaq() {
+  const faqDd = document.querySelectorAll(".js-faq dd")
+  const faqDt = document.querySelectorAll(".js-faq dt")
 
-const faqDd = document.querySelectorAll(".js-faq dd")
-const faqDt = document.querySelectorAll(".js-faq dt")
-
-function faqdtClick(index) {
-  faqDd[index].classList.toggle("ativo")
-  //faqDd.forEach((item) => {
-  //item.classList.toggle("ativo");
-  // });
-
-}
-faqDt.forEach((item, index) => {
-  item.addEventListener("click", () => {
-    faqdtClick(index);
-  })
-})
-
-
-
-
-
-
-
-const imgTop = document.querySelector('img');
-console.log(imgTop.offsetTop)
-
-const imgTopwidth = document.querySelectorAll('img');
-let soma = 0;
-imgTopwidth.forEach(function (item, index, array) {
-  soma += item.offsetWidth
-});
-console.log(soma);
-
-const links = document.querySelectorAll('a');
-links.forEach(function (item) {
-  const linkW = item.offsetWidth;
-  const linkH = item.offsetHeight;
-  if (linkW >= 48 && linkH >= 48) {
-    console.log(item, "Possuí acessibilidade")
-  } else {
-    console.log(item, "Não possui acessibilidade")
+  function faqdtClick(index) {
+    faqDd[index].classList.toggle("ativo")
+    faqDt[index].classList.toggle("ativo")
   }
-})
+  faqDt.forEach((item, index) => {
+    item.addEventListener("click", () => {
+      faqdtClick(index);
+    })
+  })
+}
 
+navFaq(); //isolando a função 
 
-const browserSmall = window.matchMedia("(max-width: 720px)").matches;
-console.log(browserSmall)
-if (browserSmall) {
-  const menu = document.querySelector(".menu")
-  menu.classList.add("mobile")
+function scrollSuave() {
+  const menuLight = document.querySelectorAll('.js-menu a[href^="#"]');
+
+  function scrollSection(event) {
+    event.preventDefault();
+    const hrefId = event.currentTarget.getAttribute('href');
+    const section = document.querySelector(hrefId);
+    const topo = section.offsetTop + -60;
+    console.log(topo);
+    window.scrollTo({
+      top: topo,
+      behavior: "smooth"
+    });
+  }
+
+  menuLight.forEach((item) => {
+    item.addEventListener("click", scrollSection)
+  });
+}
+scrollSuave()//isolando a função 
+
+function animacaoEntarda() {
+  const sectionScroll = document.querySelectorAll(".js-scroll");
+  const windowTamanho = window.innerHeight * 0.9;
+
+  function animaScroll() {
+    sectionScroll.forEach((item) => {
+      const scrollTop = item.getBoundingClientRect().top;
+      const visualizando = (scrollTop - windowTamanho) < 0;
+      if (visualizando) {
+        item.classList.add("ativo");
+      } else {
+        item.classList.remove("ativo");
+      }
+    });
+  }
+  function animaScroll()
+  window.addEventListener("scroll", animaScroll)
 }
